@@ -22,7 +22,7 @@ class TestOrderFeed:
         main.click_to_element(MainPageLocators.PLACE_ORDER_BUTTON)
         feed.open_page(URLs.FEED)
         after = feed.get_total_counter()
-        assert after >= before
+        assert int(after) > int(before)
 
     @allure.title("При создании нового заказа счётчик 'Выполнено за сегодня' увеличивается")
     def test_today_counter_increases(self, authorized_driver):
@@ -37,7 +37,7 @@ class TestOrderFeed:
         main.click_to_element(MainPageLocators.PLACE_ORDER_BUTTON)
         feed.open_page(URLs.FEED)
         after = feed.get_today_counter()
-        assert after >= before
+        assert int(after) > int(before)
 
     @allure.title("После оформления заказа его номер появляется в разделе 'В работе'")
     def test_number_order_in_progress(self, authorized_driver):
